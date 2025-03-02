@@ -6,7 +6,7 @@
  * ===========================================
  */
 
-package modul_1;
+package Codelab.modul1;
 import java.util.Scanner;
 import java.time.LocalDate;
 
