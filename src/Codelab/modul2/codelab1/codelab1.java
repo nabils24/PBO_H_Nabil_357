@@ -6,18 +6,13 @@
  * ===========================================
  */
 
-package Codelab.modul2;
+package Codelab.modul2.codelab1;
 
 
 /**
- * Class codelab2 - Deskripsi singkat mengenai kelas ini.
+ * Class codelab1 - Class untuk codelab1 ini.
  */
-public class codelab2 {
-
-    // Constructor
-    public codelab2() {
-        // Inisialisasi jika diperlukan
-    }
+public class codelab1 {
 
     /**
      * Metode utama yang dijalankan saat program dimulai.
@@ -25,6 +20,11 @@ public class codelab2 {
      * @param args Argumen baris perintah
      */
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        hewan_interface hewan1 = new anjing("Cihuaha","Mamalia","Miawwwah");
+        hewan_interface hewan2 = new kucing("Kucing Oren","Mamalia","Miawwwah");
+
+        hewan1.tampilkan_infohewan();
+        System.out.println("\n");
+        hewan2.tampilkan_infohewan();
     }
 }
