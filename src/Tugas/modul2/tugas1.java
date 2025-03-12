@@ -27,7 +27,6 @@ public class tugas1 {
      */
     public static void main(String[] args) {
 
-        //Init
         boolean stay = true;
         Scanner input = new Scanner(System.in);
 
@@ -40,51 +39,55 @@ public class tugas1 {
             System.out.println("");
             System.out.println("1. Login Admin");
             System.out.println("2. Login Mahasiswa");
+            System.out.println("3. Keluar");
 
             System.out.print("Pilih opsi: ");
             int pilihan = input.nextInt();
             input.nextLine();
 
-            if(pilihan == 1){
+            if (pilihan == 1) {
                 System.out.println("\t==========ADMIN LOGIN==========");
-                System.out.println("");
                 System.out.print("Masukkan nama : ");
                 String nama = input.nextLine();
                 System.out.print("Masukkan password : ");
                 String password = input.nextLine();
-                if(daftarAdmin.validateAdmin(nama, password)){
+                if (daftarAdmin.validateAdmin(nama, password)) {
                     System.out.println("=-=Login Admin Berhasil!=-=");
-                    adminMenu(input);
-                }else {
+                    adminMenu(input, daftarAdmin);
+                } else {
                     System.out.println("Login Admin Gagal!");
                 }
-            }else if(pilihan == 2){
+            } else if (pilihan == 2) {
                 System.out.println("\t==========MAHASISWA LOGIN==========");
-                System.out.println("");
                 System.out.print("Masukkan nim : ");
-                int nim = input.nextInt();
+                String nim = input.nextLine();
                 System.out.print("Masukkan password : ");
                 String password = input.nextLine();
-                if(daftarMahasiswa.validateMahasiswa(nim, password)){
-                    System.out.println("=-=Login Admin Berhasil!=-=");
-
-                }else {
+                if (daftarMahasiswa.validateMahasiswa(nim, password)) {
+                    System.out.println("=-=Login Mahasiswa Berhasil!=-=");
+                    mahasiswaMenu(input, daftarMahasiswa);
+                } else {
                     System.out.println("Login Mahasiswa Gagal!");
                 }
-            }else {
+            } else if (pilihan == 3) {
+                System.out.println("Terima kasih telah menggunakan aplikasi.");
+                stay = false;
+            } else {
                 System.out.println("Pilihan tidak valid!");
             }
         }
-
+        input.close();
     }
-    private static void adminMenu(Scanner input) {
-        listAdmin daftarAdmin = new listAdmin();
+
+    private static void adminMenu(Scanner input, listAdmin daftarAdmin) {
+
         int pilihanAdmin;
         do {
             System.out.println("\n=== ADMIN DASHBOARD ===");
             System.out.println("1. List Admin");
             System.out.println("2. Ubah Password Admin");
-            System.out.println("3. Keluar");
+            System.out.println("3. Tambah Admin");
+            System.out.println("4. Keluar");
             System.out.print("Pilih opsi: ");
             pilihanAdmin = input.nextInt();
             input.nextLine();
@@ -102,17 +105,31 @@ public class tugas1 {
                     daftarAdmin.set_passwordAdmin(idAdmin, newPassword);
                     break;
                 case 3:
+                    System.out.print("Masukkan ID Admin : ");
+                    idAdmin = input.nextInt();
+                    input.nextLine();
+                    System.out.print("Masukan Nama Admin : ");
+                    String nama = input.nextLine();
+                    System.out.print("Masukan Alamat Admin : ");
+                    String alamat = input.nextLine();
+                    System.out.print("Masukan Nomor Telp Admin : ");
+                    String noTelp = input.nextLine();
+                    System.out.print("Masukkan Password Admin : ");
+                    String password = input.nextLine();
+
+                    daftarAdmin.tambah_Admin(idAdmin, nama, alamat, noTelp, password);
+                    break;
+                case 4:
                     System.out.println("Keluar dari menu Admin.");
                     break;
                 default:
                     System.out.println("Pilihan tidak valid!");
                     break;
             }
-        } while (pilihanAdmin != 3);
+        } while (pilihanAdmin != 4);
     }
 
-    private static void mahasiswaMenu(Scanner input) {
-        listMahasiswa daftarMahasiswa = new listMahasiswa();
+    private static void mahasiswaMenu(Scanner input, listMahasiswa daftarMahasiswa) {
         int pilihanMahasiswa;
         do {
             System.out.println("\n=== MAHASISWA DASHBOARD ===");
@@ -129,14 +146,14 @@ public class tugas1 {
                     break;
                 case 2:
                     System.out.print("Masukkan Id Mahasiswa: ");
-                    int idAdmin = input.nextInt();
+                    int idMahasiswa = input.nextInt(); // Ganti dari idAdmin ke idMahasiswa
                     input.nextLine();
                     System.out.print("Masukkan Password Baru: ");
                     String newPassword = input.nextLine();
-                    daftarMahasiswa.set_passwordMhs(idAdmin, newPassword);
+                    daftarMahasiswa.set_passwordMhs(idMahasiswa, newPassword);
                     break;
                 case 3:
-                    System.out.println("Keluar dari menu Admin.");
+                    System.out.println("Keluar dari menu Mahasiswa.");
                     break;
                 default:
                     System.out.println("Pilihan tidak valid!");

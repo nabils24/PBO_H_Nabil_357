@@ -41,16 +41,26 @@ public class listAdmin {
     }
 
     public void Tampil_admin() {
-        System.out.println("\tDaftar Admin");
-        System.out.println("Nama \tAlamat \tTelepon \tpassword");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getId_Admin() + " "
-                    + list.get(i).getNama() + "\t"
-                    + list.get(i).getAlamat() + "\t"
-                    + list.get(i).getTelepon() + "\t"
-                    + list.get(i).getPassword());
+        System.out.printf("| %-5s | %-15s | %-20s | %-10s |\n",
+                "ID", "Nama", "Telepon", "Password");
+        System.out.println("--------------------------------------------------------------------");
+
+        for (admin mhs : list) {
+            System.out.printf("| %-5d | %-15s | %-20s | %-10s |\n",
+                    mhs.getId_Admin(),
+                    mhs.getNama(),
+                    mhs.getTelepon(),
+                    mhs.getPassword());
         }
+
+        System.out.println("--------------------------------------------------------------------");
     }
+
+    public void tambah_Admin(int id, String nama, String alamat, String telepon, String password) {
+        list.add(new admin(id, nama, alamat, telepon, password));
+        System.out.println("Berhasil dimenambahkan ADMIN!");
+    }
+
     //menampilkan admin menurut id
     public admin findAllAdmin(int id) {
         for (int i = 0; i < list.size(); i++) {
@@ -65,13 +75,16 @@ public class listAdmin {
         return list.get(id).getNama();
     }
 
-    //ubah password admin
-    public void set_passwordAdmin(int id,String pass) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId_Admin() == id) {
-                list.get(i).setPassword(pass);
+    //udah mashok ki
+    public void set_passwordAdmin(int idAdmin, String newPassword) {
+        for (admin adm : list) {
+            if (adm.getId_Admin() == idAdmin) {
+                adm.setPassword(newPassword);
+                System.out.println("Password berhasil diubah: " + newPassword); // Debugging
+                return;
             }
         }
+        System.out.println("ID Admin tidak ditemukan!");
     }
 
 }

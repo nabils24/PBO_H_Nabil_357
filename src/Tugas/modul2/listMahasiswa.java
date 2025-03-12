@@ -32,7 +32,7 @@ public class listMahasiswa {
         );
     }
 
-    public boolean validateMahasiswa(int nim, String password) {
+    public boolean validateMahasiswa(String nim, String password) {
         for (mahasiswa mhs : list) {
             if (mhs.login(nim, password)) {
                 return true;
@@ -42,17 +42,22 @@ public class listMahasiswa {
     }
 
     public void Tampil_mahasiswa() {
-        System.out.println("\tDaftar Mahasiswa");
-        System.out.println("Nim \tNama \tAlamat \tTelepon \tpassword");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getId_Mahasiswa() + " "
-                    + list.get(i).getNim() + "\t"
-                    + list.get(i).getNama() + "\t"
-                    + list.get(i).getAlamat() + "\t"
-                    + list.get(i).getTelepon() + "\t"
-                    + list.get(i).getPassword());
+        System.out.printf("| %-5s | %-15s | %-20s | %-12s | %-10s |\n",
+                "ID", "NIM", "Nama", "Telepon", "Password");
+        System.out.println("--------------------------------------------------------------------");
+
+        for (mahasiswa mhs : list) {
+            System.out.printf("| %-5d | %-15s | %-20s | %-12s | %-10s |\n",
+                    mhs.getId_Mahasiswa(),
+                    mhs.getNim(),
+                    mhs.getNama(),
+                    mhs.getTelepon(),
+                    mhs.getPassword());
         }
+
+        System.out.println("--------------------------------------------------------------------");
     }
+
     //menampilkan mahasiswa menurut id
     public mahasiswa findAllMahasiswa(int id) {
         for (int i = 0; i < list.size(); i++) {
@@ -67,12 +72,15 @@ public class listMahasiswa {
         return list.get(id).getNama();
     }
 
-    //ubah password mahasiswa
-    public void set_passwordMhs(int id,String pass) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId_Mahasiswa() == id) {
-                list.get(i).setPassword(pass);
+    //Debug
+    public void set_passwordMhs(int idMahasiswa, String newPassword) {
+        for (mahasiswa mhs : list) {
+            if (mhs.getId_Mahasiswa() == idMahasiswa) {
+                mhs.setPassword(newPassword);
+                System.out.println("Password berhasil diubah: " + newPassword); // Debugging
+                return;
             }
         }
+        System.out.println("ID Mahasiswa tidak ditemukan!");
     }
 }

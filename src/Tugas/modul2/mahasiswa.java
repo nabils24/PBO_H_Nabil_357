@@ -34,10 +34,15 @@ public class mahasiswa implements user_interface {
      * @param password
      * @return
      */
-    public boolean login(int nim, String password) {
-        long nimL = (long) nim;
-        return this.nim == nimL && this.password.equals(password);
+    public boolean login(String nim, String password) {
+        try {
+            long nimL = Long.parseLong(nim); // Konversi String ke long
+            return this.nim == nimL && this.password.equals(password);
+        } catch (NumberFormatException e) {
+            return false; // Jika NIM tidak bisa dikonversi, login gagal
+        }
     }
+
 
     /**
      * getter dan setter id admin

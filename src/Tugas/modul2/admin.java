@@ -33,8 +33,12 @@ public class admin implements user_interface {
      * @return
      */
     public boolean login(String nama, String password) {
-        return String.valueOf(this.nama).equals(nama) && String.valueOf(this.password).equals(password);
+        if (this.nama == null || this.password == null || nama == null || password == null) {
+            return false;
+        }
+        return this.nama.equals(nama) && this.password.equals(password);
     }
+
 
     /**
      * getter dan setter id admin
