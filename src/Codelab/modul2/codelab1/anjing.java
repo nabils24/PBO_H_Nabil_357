@@ -20,12 +20,14 @@ public class anjing implements hewan_interface{
     private String nama;
     private String jenis;
     private String suara;
+    private String umur;
 
     // Constructor dengan atribut
-    public anjing(String nama,String jenis, String suara) {
+    public anjing(String nama,String jenis, String suara, String umur) {
         this.nama = nama; // this mengambil dari variable instance nama dan nilai parameter nama disimpan kedalam variable instance
         this.jenis = jenis; // this mengambil dari variable instance jenis dan nilai parameter jenis disimpan kedalam variable instance
         this.suara = suara; // this mengambil dari variable instance suara dan nilai parameter suara disimpan kedalam variable instance
+        this.umur = umur;
     }
 
     /**
@@ -37,6 +39,7 @@ public class anjing implements hewan_interface{
         System.out.println("Nama : "+this.nama);
         System.out.println("Jenis : "+this.jenis);
         System.out.println("Suara : "+this.suara);
+        System.out.println("Umur : "+this.umur);
         System.out.println("===========SELESAI=============");
     }
 }

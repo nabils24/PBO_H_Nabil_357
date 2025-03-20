@@ -20,7 +20,7 @@ public class codelab1 {
      * @param args Argumen baris perintah
      */
     public static void main(String[] args) {
-        hewan_interface hewan1 = new anjing("Cihuaha","Mamalia","Miawwwah");
+        hewan_interface hewan1 = new anjing("Cihuaha","Mamalia","Miawwwah", "18");
         hewan_interface hewan2 = new kucing("Kucing Oren","Mamalia","Miawwwah");
 
         hewan1.tampilkan_infohewan();
