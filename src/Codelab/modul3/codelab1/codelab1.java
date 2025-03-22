@@ -20,6 +20,9 @@ public class codelab1 {
      * @param args Argumen baris perintah
      */
     public static void main(String[] args) {
+        /**
+         * membuat object dari karakterGame, minion, hero, enemies agar bisa diakses
+         */
         karakterGame umum = new karakterGame("Karakter Umum", 100);
         minion minionMidlane = new minion("Minion MidLane", 20);
         hero miya = new hero("Miya", 150);

@@ -14,10 +14,21 @@ package Codelab.modul3.codelab1;
  */
 public class enemies extends karakterGame{
 
+    /**
+     * enemies disini berguna sebagai constructor yang akan mengakses superclass super(nama,kesehatan)
+     * @param nama
+     * @param kesehatan
+     */
     public enemies(String nama, int kesehatan) {
         super(nama, kesehatan);
     }
 
+    /**
+     * method serang disini bertugas mengoveride pada superclass serang yang dimana berisi 3 parameter dan mengembalikan nilai sesuai pada code
+     * @param target
+     * @param damage
+     * @param skil
+     */
     @Override
     public void serang(karakterGame target, int damage, String skil) {
         System.out.println(getNama() + " menyerang "+target.getNama()+ " menggunakan "+skil);
