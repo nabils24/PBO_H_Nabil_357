@@ -14,12 +14,14 @@ package Tugas.modul2;
  */
 public class Mahasiswa {
     private String nim;
+    private String nama;
     private String password;
 
     // Constructor Mahasiswa
-    public Mahasiswa(String nim, String password) {
+    public Mahasiswa(String nim, String password, String nama) {
         this.nim = nim;
         this.password = password;
+        this.nama = nama;
     }
 
     // Menampilkan informasi
@@ -28,6 +30,7 @@ public class Mahasiswa {
         System.out.println("      SELAMAT DATANG MAHASISWA       ");
         System.out.println("======================================");
         System.out.println("NIM: " + nim + "!");
+        System.out.println("Nama: " + nama + "!");
         System.out.println("======================================\n");
     }
 

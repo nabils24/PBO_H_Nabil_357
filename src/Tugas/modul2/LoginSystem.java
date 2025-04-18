@@ -19,7 +19,7 @@ public class LoginSystem {
 
         // Membuat data login untuk admin dan mahasis
         Admin admin = new Admin("admin", "admin123");
-        Mahasiswa mahasiswa = new Mahasiswa("12345", "mhs123");
+        Mahasiswa mahasiswa = new Mahasiswa("12345", "mhs123", "nabil");
 
         System.out.println("=== Sistem Login ===");
         System.out.println("Pilih tipe login:");
